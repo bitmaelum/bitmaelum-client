@@ -1,0 +1,60 @@
+{
+  "name": "re",
+  "version": "0.1.0",
+  "private": true,
+  "main": "public/Main.js",
+  "license": "MIT",
+  "homepage": "./",
+  "dependencies": {
+    "@mdi/font": "^5.4.55",
+    "@mdi/react": "^1.4.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "bootstrap": "^4.5.1",
+    "electron-photon": "^1.1.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "react-split": "^2.0.9",
+    "reactstrap": "^8.5.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-start": "electron .",
+    "electron-pack": "yarn build --win --macos -c.extraMetadata.main=build/Main.js",
+    "preelectron-pack": "yarn build"
+  },
+  "build": {
+    "appId": "nonExistentID",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^9.1.2",
+    "electron-builder": "^22.8.0"
+  }
+}

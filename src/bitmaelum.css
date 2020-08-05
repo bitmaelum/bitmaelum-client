@@ -1,0 +1,30 @@
+.bm_read {
+  font-weight: 100;
+}
+
+.bm_unread {
+    font-weight: 700;
+}
+
+.bm_hpane_parent {
+    position:absolute;
+    height:100%;
+    margin:0;
+    padding:0;
+    width:100%;
+}
+
+.bm_hpane {
+    position:relative;
+    float:left;
+    height:100%;
+    width:50%;
+    background-color:#A2A;
+}
+#div2 {
+    position:relative;
+    float:left;
+    height:100%;
+    width:50%;
+    background-color:#BBB;
+}
