@@ -1,17 +1,21 @@
 {
-  "name": "re",
-  "version": "0.1.0",
+  "name": "bitmaelum-electron-client",
+  "description": "The BitMaelum electron client proof-of-concept",
+  "version": "0.0.1",
+  "author": {
+    "name": "Joshua Thijssen",
+    "email": "jthijssen@noxlogic.nl",
+    "url": "https://noxlogic.nl"
+  },
   "private": true,
-  "main": "public/Main.js",
+  "main": "public/electron.js",
   "license": "MIT",
   "homepage": "./",
   "dependencies": {
     "@mdi/font": "^5.4.55",
     "@mdi/react": "^1.4.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.1",
+    "electron-is-dev": "^1.2.0",
     "electron-photon": "^1.1.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -20,23 +24,35 @@
     "reactstrap": "^8.5.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "electron-start": "electron .",
-    "electron-pack": "yarn build --win --macos -c.extraMetadata.main=build/Main.js",
-    "preelectron-pack": "yarn build"
+    "start": "rescripts start",
+    "build": "rescripts build",
+    "test": "rescripts test",
+    "electron-start": "node_modules/.bin/electron .",
+    "preelectron-pack": "yarn build",
+    "electron-dev": "set BROWSER=none && node_modules/.bin/concurrently \"yarn start\" \"node_modules/.bin/wait-on http://localhost:3000 && node_modules/.bin/electron .\"",
+    "postinstall": "node_modules/.bin/electron-builder",
+    "release-windows-x32": "node_modules/.bin/electron-builder --windows --ia32  -c.extraMetadata.main=build/electron.js -c.nsis.artifactName=\"${productName} ${version} 32bit Setup.${ext}\"",
+    "release-windows-x64": "node_modules/.bin/electron-builder --windows --x64  -c.extraMetadata.main=build/electron.js -c.nsis.artifactName=\"${productName} ${version} 64bit Setup.${ext}\""
   },
   "build": {
-    "appId": "nonExistentID",
+    "appId": "com.bitmaelum.electron-client",
+    "productName": "BitMaelum Electron Client",
+    "copyright": "Copyright (c) 2020 ${author}",
     "files": [
       "build/**/*",
+      "build/*",
       "node_modules/**/*"
     ],
     "directories": {
-      "buildResources": "assets"
-    }
+      "buildResources": "build"
+    },
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "icon": "assets/ms-icon-310x310.png"
+    },
+    "nsis": {}
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,7 +70,16 @@
     ]
   },
   "devDependencies": {
-    "electron": "^9.1.2",
-    "electron-builder": "^22.8.0"
+    "@rescripts/cli": "^0.0.14",
+    "@rescripts/rescript-env": "^0.0.12",
+    "concurrently": "^5.3.0",
+    "electron": "^9.2.0",
+    "electron-builder": "^22.8.0",
+    "electron-builder-squirrel-windows": "^22.8.1",
+    "typescript": "^3.9.7",
+    "wait-on": "^5.2.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2"
   }
 }
