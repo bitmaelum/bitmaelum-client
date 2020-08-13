@@ -26,7 +26,6 @@ import "electron-photon/dist/PhotonProgressCircle/styles/cocoa.css";
 import "electron-photon/dist/PhotonSlider/styles/cocoa.css";
 import "electron-photon/dist/PhotonSwipe/styles/cocoa.css";
 import "electron-photon/dist/PhotonTab/styles/cocoa.css";
-// import "electron-photon/dist/PhotonTable/styles/cocoa.css";
 import "electron-photon/dist/PhotonToolbar/styles/cocoa.css";
 import "electron-photon/dist/PhotonWindow/styles/cocoa.css";
 import "electron-photon/dist/PhotonWindowContent/styles/cocoa.css";

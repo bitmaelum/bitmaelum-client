@@ -1,12 +1,14 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, screen } = require('electron')
 const path = require('path')
 const isDev = require("electron-is-dev");
 
 function createWindow () {
   // Create the browser window.
-  var win = new BrowserWindow({width: 800, height: 600})
+  var dim = screen.getPrimaryDisplay();
 
-  console.log("ISDEV: " + isDev)
+  var w = Math.floor(dim.size.width/1.5);
+  var h = Math.floor(dim.size.height/1.5);
+  var win = new BrowserWindow({width: w, height: h})
 
   // and load the index.html of the app
   win.loadURL(isDev

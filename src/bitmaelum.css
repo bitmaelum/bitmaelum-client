@@ -6,25 +6,33 @@
     font-weight: 700;
 }
 
-.bm_hpane_parent {
-    position:absolute;
-    height:100%;
-    margin:0;
-    padding:0;
-    width:100%;
+/*.split, .gutter.gutter-horizontal {*/
+/*    float: left;*/
+/*}*/
+.split, .gutter {
+    background-color: lightgray;
 }
 
-.bm_hpane {
-    position:relative;
-    float:left;
-    height:100%;
-    width:50%;
-    background-color:#A2A;
+.bm-pane {
+    /*background-color: green;*/
+    /*width: 100%;*/
+    flex: 1 1;
 }
-#div2 {
-    position:relative;
-    float:left;
-    height:100%;
-    width:50%;
-    background-color:#BBB;
+
+.logo {
+    /*text-align: center;*/
+    height: 100%;
+    /*background-color: lightblue;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border: 3px solid green;*/
+}
+
+.logo img {
+    /*height: 200px;*/
+}
+
+.bm-message-details {
+    background-color: #f0f0f0
 }

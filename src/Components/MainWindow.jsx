@@ -1,6 +1,7 @@
 import React from 'react';
 import icon from '../images/logo.svg';
 import Split from 'react-split'
+import Logo from '../images/splash.svg'
 
 const buttons = [
   { "icon": "mdi mdi-home", "text": "home" },
@@ -57,6 +58,14 @@ function Footer() {
     <tool-bar type="footer">
       <small>&nbsp; <img alt="Logo" className="align-content-center" style={{height: "20px", padding: "4px"}} src={icon}/> BitMaelum Client - Ready for action</small>
     </tool-bar>
+  )
+}
+
+function MessageDetails() {
+  return (
+    <div className="card-body logo">
+      <img src={Logo} alt="Logo" />
+    </div>
   )
 }
 
@@ -172,7 +181,7 @@ function WindowContent() {
             </nav-item>
 
             <nav-item className="">
-              <span className="mdi mdi-cloud"/>&nbsp;
+              <span className="mdi mdi-magnify"/>&nbsp;
               Search accounts
             </nav-item>
           </nav-group>
@@ -196,21 +205,27 @@ function WindowContent() {
           </nav-group>
 
         </div>
-        <div className="pane">
+        {/*<div className="pane" style={{height: "100%"}}>*/}
           <Split
-            sizes={[75, 25]}
-            gutterSize={10}
-            cursor="row-resize"
-            direction="vertical"
+              sizes={[50, 50]}
+              minSize={175}
+              expandToMin={false}
+              gutterSize={10}
+              gutterAlign="center"
+              snapOffset={30}
+              dragInterval={1}
+              direction="vertical"
+              cursor="row-resize"
+              className="bm-pane"
           >
-            <div>
-            <MessageList />
+            <div className="bm-message-list">
+              <MessageList />
             </div>
-            <div>
-            <MessageList />
+            <div className="bm-message-details">
+              <MessageDetails />
             </div>
           </Split>
-        </div>
+        {/*</div>*/}
 
       </div>
     </window-content>
@@ -219,12 +234,12 @@ function WindowContent() {
 
 function MainWindow() {
   return (
-        <ph-window>
-          <Toolbar />
-          <Tabs />
-          <WindowContent />
-          <Footer />
-        </ph-window>
+    <ph-window>
+      <Toolbar />
+      <Tabs />
+      <WindowContent />
+      <Footer />
+    </ph-window>
   );
 }
 
